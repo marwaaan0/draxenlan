@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode, useEffect, useRef } from 'react';
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 import { usePathname } from 'next/navigation';
 
 interface SmoothScrollProps {
@@ -18,7 +18,6 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
-      smoothWheel: true,
       wheelMultiplier: 1,
       touchMultiplier: 2,
     });

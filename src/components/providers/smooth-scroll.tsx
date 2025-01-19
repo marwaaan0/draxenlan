@@ -21,7 +21,6 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
       smoothWheel: true,
       wheelMultiplier: 1,
       touchMultiplier: 2,
-      infinite: false,
     });
 
     function raf(time: number) {
@@ -40,35 +39,6 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-
-  // Handle anchor links
-  useEffect(() => {
-    const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const anchor = target.closest('a');
-      
-      if (!anchor) return;
-      
-      const href = anchor.getAttribute('href');
-      if (!href?.startsWith('#')) return;
-      
-      e.preventDefault();
-      const element = document.querySelector(href);
-      if (!element) return;
-
-      lenisRef.current?.scrollTo(element, {
-        offset: 0,
-        duration: 1.5,
-        easing: (t) => {
-          const c4 = (2 * Math.PI) / 3;
-          return t === 1 ? 1 : -Math.pow(2, -10 * t) * Math.sin((t * 10 - 0.75) * c4) + 1;
-        },
-      });
-    };
-
-    document.addEventListener('click', handleAnchorClick);
-    return () => document.removeEventListener('click', handleAnchorClick);
-  }, []);
 
   return <>{children}</>;
 }

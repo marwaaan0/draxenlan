@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import SplineScene from "@/components/ui/spline-scene";
+import SplineScene from "@/components/client/spline-scene";
 import { Sparkles, ArrowRight, Zap, Brain } from "lucide-react";
 
 function CircuitLines() {

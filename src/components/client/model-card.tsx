@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Brain, Sparkles, Zap, MessageSquare, Code, Image, ArrowRight } from 'lucide-react';
+import React from 'react';
 
 const iconComponents = {
   brain: Brain,
@@ -108,7 +109,7 @@ export function ModelCard({ title, description, icon, features, index }: ModelCa
 
           {/* Feature preview */}
           <AnimatePresence mode="wait">
-            {selectedFeature !== null && (
+            {selectedFeature !== null && features[selectedFeature] && (
               <motion.div
                 key={selectedFeature}
                 initial={{ opacity: 0, y: 20 }}
@@ -123,6 +124,7 @@ export function ModelCard({ title, description, icon, features, index }: ModelCa
                       <div className="h-4 w-4 text-gray-400">
                         {React.createElement(iconComponents[features[selectedFeature].icon], {
                           size: 16,
+                          className: "text-gray-400"
                         })}
                       </div>
                     )}
@@ -181,6 +183,7 @@ export function ModelCard({ title, description, icon, features, index }: ModelCa
                       <div className="h-4 w-4 text-gray-400">
                         {React.createElement(iconComponents[feature.icon], {
                           size: 16,
+                          className: "text-gray-400"
                         })}
                       </div>
                     )}

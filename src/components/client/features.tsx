@@ -2,13 +2,13 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
-import { Code2, Fingerprint, Workflow, Zap, Sparkles, Brain } from 'lucide-react';
+import { Code2, Fingerprint, GitBranch, Zap, Sparkles, Brain } from 'lucide-react';
 
 const features = [
   {
     title: 'Stream Processing',
     description: 'Handle continuous data streams with microsecond latency',
-    icon: Workflow,
+    icon: GitBranch,
     color: 'purple',
     details: [
       'Real-time data ingestion',

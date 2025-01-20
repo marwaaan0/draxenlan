@@ -3,8 +3,17 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import SplineScene from "@/components/client/spline-scene";
+import dynamic from 'next/dynamic';
 import { Sparkles, ArrowRight, Zap, Brain } from "lucide-react";
+
+const SplineScene = dynamic(() => import('@/components/client/spline-scene'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[500px] md:h-[600px] flex items-center justify-center bg-black/50 backdrop-blur-sm rounded-lg">
+      <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+    </div>
+  ),
+});
 
 function CircuitLines() {
   return (
@@ -34,6 +43,14 @@ function CircuitLines() {
 }
 
 function GlowingOrbs() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {[...Array(5)].map((_, i) => (
@@ -53,10 +70,9 @@ function GlowingOrbs() {
             duration: 4,
             repeat: Infinity,
             delay: i * 0.5,
-            ease: "easeInOut",
           }}
         >
-          <div className="w-full h-full rounded-full bg-gradient-to-r from-purple-500/20 to-blue-500/20 blur-xl" />
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full blur-xl" />
         </motion.div>
       ))}
     </div>
@@ -64,6 +80,14 @@ function GlowingOrbs() {
 }
 
 function FloatingParticles() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {[...Array(50)].map((_, i) => (

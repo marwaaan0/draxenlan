@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { motion, useSpring, useTransform } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -8,7 +9,7 @@ interface SpotlightProps {
   fill?: string;
 }
 
-export default function Spotlight({ className, fill = "white" }: SpotlightProps) {
+export function Spotlight({ className, fill = "white" }: SpotlightProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [parentElement, setParentElement] = useState<HTMLElement | null>(null);
@@ -54,22 +55,21 @@ export default function Spotlight({ className, fill = "white" }: SpotlightProps)
       parentElement.removeEventListener('mouseenter', () => setIsHovered(true));
       parentElement.removeEventListener('mouseleave', () => setIsHovered(false));
     };
-  }, [parentElement, handleMouseMove]);
+  }, [handleMouseMove, parentElement]);
 
   return (
-    <motion.div
-      ref={containerRef}
-      className={cn(
-        'pointer-events-none absolute rounded-full bg-gradient-to-r from-purple-500/30 to-pink-500/30 blur-3xl transition-opacity duration-500',
-        isHovered ? 'opacity-100' : 'opacity-0',
-        className
-      )}
-      style={{
-        width: spotlightSize,
-        height: spotlightSize,
-        left: spotlightLeft,
-        top: spotlightTop,
-      }}
-    />
+    <div ref={containerRef} className={cn('pointer-events-none absolute inset-0', className)}>
+      <motion.div
+        className="absolute z-10 rounded-full pointer-events-none"
+        style={{
+          width: spotlightSize,
+          height: spotlightSize,
+          left: spotlightLeft,
+          top: spotlightTop,
+          background: `radial-gradient(circle at center, ${fill}, transparent)`,
+          opacity: isHovered ? 0.15 : 0,
+        }}
+      />
+    </div>
   );
 }

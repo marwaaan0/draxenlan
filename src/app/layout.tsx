@@ -12,7 +12,7 @@ const fontSans = FontSans({
 
 export const metadata: Metadata = {
   title: 'Draxen AI - Next Generation Artificial Intelligence',
-  description: 'Experience innovative artificial intelligence with our revolutionary platform. Built for visionaries, designed for the future.',
+  description: 'Experience innovative artificial intelligence with our revolutionary platform.',
 }
 
 export default function RootLayout({
@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className={cn(
         'min-h-screen bg-black font-sans antialiased',
         fontSans.variable

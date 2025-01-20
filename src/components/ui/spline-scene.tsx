@@ -1,6 +1,16 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
+
+const Spline = dynamic(() => import('@splinetool/react-spline'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center bg-black/50 backdrop-blur-sm rounded-lg">
+      <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
+    </div>
+  ),
+});
 
 export default function SplineScene() {
   return (
@@ -10,9 +20,7 @@ export default function SplineScene() {
           <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
         </div>
       }>
-        <div className="w-full h-full flex items-center justify-center">
-          <div className="text-white text-lg">3D Model Loading...</div>
-        </div>
+        <Spline scene={process.env.NEXT_PUBLIC_SPLINE_SCENE || 'https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode'} />
       </Suspense>
     </div>
   );

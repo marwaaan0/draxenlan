@@ -13,27 +13,27 @@ const models = [
       {
         title: 'Multilingual Understanding',
         description: 'Process and generate text in over 100 languages with native-level understanding',
-        icon: 'message'
+        icon: 'message' as const
       },
       {
         title: 'Semantic Analysis',
         description: 'Deep comprehension of context, sentiment, and underlying meaning',
-        icon: 'code'
+        icon: 'code' as const
       },
       {
         title: 'Content Generation',
         description: 'Create high-quality content from articles to poetry with creative flair',
-        icon: 'message'
+        icon: 'message' as const
       },
       {
         title: 'Code Intelligence',
         description: 'Understand, generate, and explain code across programming languages',
-        icon: 'code'
+        icon: 'code' as const
       },
       {
         title: 'Real-time Translation',
         description: 'Instant translation with context preservation and cultural adaptation',
-        icon: 'message'
+        icon: 'message' as const
       }
     ],
     examples: [
@@ -53,27 +53,27 @@ const models = [
       {
         title: 'Object Detection',
         description: 'Identify and track multiple objects in real-time with high precision',
-        icon: 'image'
+        icon: 'image' as const
       },
       {
         title: 'Image Generation',
         description: 'Create stunning, realistic images from textual descriptions',
-        icon: 'image'
+        icon: 'image' as const
       },
       {
         title: 'Scene Understanding',
         description: 'Comprehend complex scenes and spatial relationships between objects',
-        icon: 'image'
+        icon: 'image' as const
       },
       {
         title: 'Facial Recognition',
         description: 'Advanced facial detection and analysis with privacy protection',
-        icon: 'image'
+        icon: 'image' as const
       },
       {
         title: 'Style Transfer',
         description: 'Apply artistic styles to images while preserving content integrity',
-        icon: 'image'
+        icon: 'image' as const
       }
     ],
     examples: [
@@ -93,27 +93,27 @@ const models = [
       {
         title: 'Cross-modal Learning',
         description: 'Understand relationships between different types of data',
-        icon: 'code'
+        icon: 'code' as const
       },
       {
         title: 'Audio Processing',
         description: 'Convert speech to text and analyze audio patterns',
-        icon: 'message'
+        icon: 'message' as const
       },
       {
         title: 'Video Analysis',
         description: 'Extract insights from video content with temporal understanding',
-        icon: 'image'
+        icon: 'image' as const
       },
       {
         title: 'Interactive Learning',
         description: 'Adapt and improve through multimodal interactions',
-        icon: 'code'
+        icon: 'code' as const
       },
       {
         title: 'Data Synthesis',
         description: 'Generate coordinated outputs across multiple modalities',
-        icon: 'message'
+        icon: 'message' as const
       }
     ],
     examples: [

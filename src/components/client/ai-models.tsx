@@ -57,75 +57,75 @@ const models = [
       },
       {
         title: 'Image Generation',
-        description: 'Create stunning, realistic images from textual descriptions',
+        description: 'Create photorealistic images from textual descriptions',
         icon: 'image' as const
       },
       {
         title: 'Scene Understanding',
-        description: 'Comprehend complex scenes and spatial relationships between objects',
+        description: 'Comprehend complex visual scenes and their relationships',
         icon: 'image' as const
       },
       {
         title: 'Facial Recognition',
-        description: 'Advanced facial detection and analysis with privacy protection',
+        description: 'Advanced facial detection and recognition capabilities',
         icon: 'image' as const
       },
       {
-        title: 'Style Transfer',
-        description: 'Apply artistic styles to images while preserving content integrity',
+        title: 'Visual Search',
+        description: 'Find similar images based on visual content and features',
         icon: 'image' as const
       }
     ],
     examples: [
-      "Generate a photorealistic image of a futuristic city",
-      "Detect and count objects in this surveillance footage",
-      "Apply an impressionist style to this photograph",
-      "Analyze the emotion in this facial expression",
-      "Remove the background from this product image"
+      "Generate an image of a futuristic city",
+      "Detect objects in this surveillance footage",
+      "Find similar products from this image",
+      "Analyze the composition of this artwork",
+      "Create variations of this logo design"
     ],
-    demoPrompt: 'Describe the image you want to generate or upload an image for analysis.',
+    demoPrompt: 'Upload an image or describe what you want to generate.',
   },
   {
-    title: 'Multimodal AI',
-    description: 'Cutting-edge AI that seamlessly combines text, vision, and audio understanding for comprehensive analysis and generation.',
+    title: 'Speech Recognition',
+    description: 'Advanced audio processing AI that can understand, transcribe, and generate natural speech with high accuracy.',
     icon: 'zap' as const,
     features: [
       {
-        title: 'Cross-modal Learning',
-        description: 'Understand relationships between different types of data',
-        icon: 'code' as const
-      },
-      {
-        title: 'Audio Processing',
-        description: 'Convert speech to text and analyze audio patterns',
+        title: 'Voice Recognition',
+        description: 'Identify and authenticate speakers from voice patterns',
         icon: 'message' as const
       },
       {
-        title: 'Video Analysis',
-        description: 'Extract insights from video content with temporal understanding',
-        icon: 'image' as const
+        title: 'Speech-to-Text',
+        description: 'Convert spoken words to text with high accuracy',
+        icon: 'message' as const
       },
       {
-        title: 'Interactive Learning',
-        description: 'Adapt and improve through multimodal interactions',
-        icon: 'code' as const
+        title: 'Text-to-Speech',
+        description: 'Generate natural-sounding speech from text',
+        icon: 'message' as const
       },
       {
-        title: 'Data Synthesis',
-        description: 'Generate coordinated outputs across multiple modalities',
+        title: 'Emotion Detection',
+        description: 'Analyze emotional content in speech patterns',
+        icon: 'message' as const
+      },
+      {
+        title: 'Language Translation',
+        description: 'Real-time translation of spoken language',
         icon: 'message' as const
       }
     ],
     examples: [
-      "Create a video with matching audio from this script",
-      "Extract key moments from this podcast",
-      "Generate an image that matches this music",
-      "Analyze the emotion in this video clip",
-      "Convert this presentation to an interactive format"
+      "Transcribe this audio recording",
+      "Generate speech from this text",
+      "Identify the speaker in this clip",
+      "Detect emotions in this conversation",
+      "Translate this speech to Spanish"
     ],
-    demoPrompt: 'Try our multimodal AI by combining different types of inputs (text, image, audio).',
+    demoPrompt: 'Upload an audio file or enter text to convert to speech.',
   }
-];
+] as const;
 
 export function AIModels() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -138,35 +138,15 @@ export function AIModels() {
   const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [100, 0, 0, -100]);
 
   return (
-    <section
-      id="models"
-      ref={containerRef}
-      className="relative min-h-screen w-full bg-black py-20"
-    >
+    <section id="models" className="relative py-20 overflow-hidden">
       <motion.div
+        ref={containerRef}
         style={{ opacity, y }}
         className="container mx-auto px-4"
       >
-        <div className="mb-12 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl font-bold text-white sm:text-4xl md:text-5xl"
-          >
-            Our AI Models
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mx-auto mt-4 max-w-2xl text-gray-400"
-          >
-            Experience the power of our advanced AI models, each designed to excel in
-            specific domains while working seamlessly together.
-          </motion.p>
-        </div>
-
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
+          Our AI Models
+        </h2>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {models.map((model, index) => (
             <ModelCard key={model.title} {...model} index={index} />

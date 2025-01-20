@@ -4,10 +4,19 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Brain, Sparkles, Zap, MessageSquare, Code, Image } from 'lucide-react';
 
+const iconComponents = {
+  brain: Brain,
+  sparkles: Sparkles,
+  zap: Zap,
+  message: MessageSquare,
+  code: Code,
+  image: Image,
+} as const;
+
 interface Feature {
   title: string;
   description: string;
-  icon: string;
+  icon: keyof typeof iconComponents;
 }
 
 interface ModelCardProps {
@@ -50,17 +59,7 @@ export function ModelCard({ title, description, icon, features, index }: ModelCa
     setMouseY(y / rect.height);
   };
 
-  const IconComponent = {
-    brain: Brain,
-    sparkles: Sparkles,
-    zap: Zap,
-  }[icon];
-
-  const FeatureIcon = {
-    message: MessageSquare,
-    code: Code,
-    image: Image,
-  };
+  const IconComponent = iconComponents[icon];
 
   return (
     <motion.div
@@ -143,15 +142,11 @@ export function ModelCard({ title, description, icon, features, index }: ModelCa
                 >
                   <div className="flex items-start gap-3">
                     <div className="mt-1 rounded-lg bg-gray-800 p-2">
-                      {features[selectedFeature].icon in FeatureIcon && (
+                      {features[selectedFeature].icon in iconComponents && (
                         <div className="h-4 w-4 text-gray-400">
-                          {
-                            FeatureIcon[
-                              features[selectedFeature].icon as keyof typeof FeatureIcon
-                            ]({
-                              size: 16,
-                            })
-                          }
+                          {iconComponents[features[selectedFeature].icon]({
+                            size: 16,
+                          })}
                         </div>
                       )}
                     </div>
@@ -218,9 +213,9 @@ export function ModelCard({ title, description, icon, features, index }: ModelCa
               >
                 <div className="flex items-start gap-3">
                   <div className="mt-1 rounded-lg bg-gray-800 p-2">
-                    {feature.icon in FeatureIcon && (
+                    {feature.icon in iconComponents && (
                       <div className="h-4 w-4 text-gray-400">
-                        {FeatureIcon[feature.icon as keyof typeof FeatureIcon]({
+                        {iconComponents[feature.icon]({
                           size: 16,
                         })}
                       </div>

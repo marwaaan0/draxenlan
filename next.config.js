@@ -5,9 +5,6 @@ const nextConfig = {
   images: {
     domains: ['prod.spline.design'],
   },
-  experimental: {
-    optimizeCss: true,
-  },
 }
 
 module.exports = nextConfig

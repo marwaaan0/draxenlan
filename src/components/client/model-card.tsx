@@ -14,18 +14,18 @@ const iconComponents = {
   image: Image,
 } as const;
 
-interface Feature {
-  title: string;
-  description: string;
-  icon: keyof typeof iconComponents;
-}
+type Feature = {
+  readonly title: string;
+  readonly description: string;
+  readonly icon: keyof typeof iconComponents;
+};
 
 interface ModelCardProps {
-  title: string;
-  description: string;
-  icon: keyof typeof iconComponents;
-  features: Feature[];
-  index: number;
+  readonly title: string;
+  readonly description: string;
+  readonly icon: keyof typeof iconComponents;
+  readonly features: readonly Feature[];
+  readonly index: number;
 }
 
 export function ModelCard({ title, description, icon, features, index }: ModelCardProps) {
